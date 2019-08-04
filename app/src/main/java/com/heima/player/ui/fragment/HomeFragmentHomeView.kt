@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragement_list.*
 import org.jetbrains.anko.support.v4.toast
 import java.util.ArrayList
 
-class HomeFragment: BaseFragment(), IHomeView {
+class HomeFragmentHomeView: BaseFragment(), IHomeView {
 
     override fun onError(message: String?) {
         refreshLayout.isRefreshing = false

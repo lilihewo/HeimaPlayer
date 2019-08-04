@@ -67,21 +67,3 @@ abstract class BaseFragment: Fragment(), AnkoLogger {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

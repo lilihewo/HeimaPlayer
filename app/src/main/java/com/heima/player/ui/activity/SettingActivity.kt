@@ -23,11 +23,3 @@ class SettingActivity: BaseActivity(), ToolBarManager {
     }
 
 }
-
-
-
-
-
-
-
-

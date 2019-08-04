@@ -1,9 +1,5 @@
 package com.heima.player.net
 
-import android.util.Log
-import com.google.gson.Gson
-import com.heima.player.model.Constants
-import com.heima.player.model.HomeBean
 import com.heima.player.util.ThreadUtil
 import okhttp3.*
 import java.io.IOException
@@ -41,8 +37,6 @@ class NetManager private constructor(){
                 ThreadUtil.runOnMainThread(object : Runnable {
                     override fun run() {
                         baseRequest.iResponse.onSuccess(baseRequest.type, bean)
-//                        // 回调到view层处理
-//                        iHomeView.loadSuccess(bean.list)
                     }
                 })
             }
@@ -50,15 +44,3 @@ class NetManager private constructor(){
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

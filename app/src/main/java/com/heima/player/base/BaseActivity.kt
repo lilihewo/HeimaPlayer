@@ -55,17 +55,3 @@ abstract class BaseActivity : AppCompatActivity(), AnkoLogger {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

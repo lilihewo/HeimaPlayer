@@ -1,25 +1,18 @@
 package com.heima.player.adapter
 
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.view.ViewGroup
+import android.content.Context
+import com.heima.player.base.BaseListAdapter
+import com.heima.player.model.YueDanBean
 import com.heima.player.widget.YueDanItemView
 
-class YueDanAdapter: RecyclerView.Adapter<YueDanAdapter.YueDanHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): YueDanHolder {
-        return YueDanHolder(YueDanItemView(parent.context))
+class YueDanAdapter: BaseListAdapter<YueDanBean.VideoBean, YueDanItemView>() {
+    override fun refreshItemView(itemView: YueDanItemView, data: YueDanBean.VideoBean) {
+        itemView.setData(data)
     }
 
-    override fun getItemCount(): Int {
-        return 20
+    override fun getItemView(context: Context?): YueDanItemView {
+        return YueDanItemView(context)
     }
 
-    override fun onBindViewHolder(p0: YueDanHolder, p1: Int) {
-    }
-
-    class YueDanHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
 
 }

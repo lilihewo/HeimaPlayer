@@ -1,44 +1,51 @@
-package com.heima.player.ui.fragment
+package com.heima.player.base
 
 import android.graphics.Color
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.heima.player.R
-import com.heima.player.adapter.YueDanAdapter
-import com.heima.player.base.BaseFragment
-import com.heima.player.model.YueDanBean
-import com.heima.player.presenter.impl.YueDanPresenterImpl
-import com.heima.player.view.IYueDanView
+import com.heima.player.adapter.HomeAdapter
+import com.heima.player.model.HomeBean
+import com.heima.player.presenter.impl.HomePresenterImpl
+import com.heima.player.view.IHomeView
 import kotlinx.android.synthetic.main.fragement_list.*
 import org.jetbrains.anko.support.v4.toast
 import java.util.ArrayList
 
 /**
- * 悦单界面
+ * 可变
+ * IHomeView
+ * HomeAdapter
+ * HomePresenterImpl
  */
-class YueDanFragment: BaseFragment(), IYueDanView {
+/**
+ * 所有具有下拉刷新和上拉加载更多功能的界面的基类
+ */
+class IHomeViewBaseListFragment: BaseFragment(), IHomeView {
+
     override fun onError(message: String?) {
         refreshLayout.isRefreshing = false
-        toast("加载数据失败")
+
+        toast("加载数据成功")
     }
 
-    override fun loadSuccess(list: ArrayList<YueDanBean.VideoBean>?) {
+    override fun loadSuccess(list: ArrayList<HomeBean.VideoBean>?) {
         refreshLayout.isRefreshing = false
+
         if (list == null) return
         adapter.updateList(list)
     }
 
-    override fun loadMore(list: ArrayList<YueDanBean.VideoBean>?) {
+    override fun loadMore(list: ArrayList<HomeBean.VideoBean>?) {
         refreshLayout.isRefreshing = false
 
         if (list == null) return
         adapter.loadMore(list)
     }
 
-    val adapter by lazy { YueDanAdapter() }
-
-    val presenterImpl by lazy { YueDanPresenterImpl(this) }
+    val adapter by lazy { HomeAdapter() }
+    val homePresenterImpl by lazy { HomePresenterImpl(this) }
 
     override fun initView(): View? {
         return View.inflate(context, R.layout.fragement_list, null)
@@ -47,11 +54,12 @@ class YueDanFragment: BaseFragment(), IYueDanView {
     override fun initListener() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
+
         // 初始化刷新控件
         refreshLayout.setColorSchemeColors(Color.RED, Color.YELLOW, Color.GREEN)
         // 下拉刷新
         refreshLayout.setOnRefreshListener {
-            presenterImpl.loadData()
+            homePresenterImpl.loadData()
         }
         // 上拉加载更多
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -63,7 +71,7 @@ class YueDanFragment: BaseFragment(), IYueDanView {
                         val manager: LinearLayoutManager = layoutManager
                         val lastPosition = manager.findLastVisibleItemPosition()
                         if (lastPosition == adapter.itemCount-1) {
-                            presenterImpl.loadMore()
+                            homePresenterImpl.loadMore()
                         }
                     }
                 }
@@ -72,21 +80,7 @@ class YueDanFragment: BaseFragment(), IYueDanView {
     }
 
     override fun initData() {
-        // 加载数据
-        presenterImpl.loadData()
+        homePresenterImpl.loadData()
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
