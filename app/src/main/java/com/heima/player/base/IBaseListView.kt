@@ -1,7 +1,5 @@
 package com.heima.player.base
 
-import com.heima.player.model.HomeBean
-import java.util.ArrayList
 
 /**
  * 所有下拉刷新和上拉加载更多列表界面的view的基类

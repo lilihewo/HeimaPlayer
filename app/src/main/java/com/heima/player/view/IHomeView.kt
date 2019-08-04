@@ -7,7 +7,7 @@ import java.util.ArrayList
 /**
  * 和Presenter交互
  */
-interface IHomeView: IBaseListView<ArrayList<HomeBean.VideoBean>> {
+interface IHomeView: IBaseListView<HomeBean> {
 }
 
 

@@ -3,6 +3,7 @@ package com.heima.player.presenter.impl
 import com.heima.player.base.IBaseListPresenter.Companion.TYPE_INIT_OR_REFRESH
 import com.heima.player.base.IBaseListPresenter.Companion.TYPE_LOAD_MORE
 import com.heima.player.base.IBaseListPresenter.Companion.maxTime
+import com.heima.player.base.IBaseListView
 import com.heima.player.model.Constants
 import com.heima.player.model.HomeBean
 import com.heima.player.net.HomeRequest
@@ -10,7 +11,7 @@ import com.heima.player.net.IResponse
 import com.heima.player.presenter.interf.IHomePresenter
 import com.heima.player.view.IHomeView
 
-class HomePresenterImpl(var homeView: IHomeView?) : IHomePresenter, IResponse<HomeBean> {
+class HomePresenterImpl(var homeView: IBaseListView<HomeBean>?) : IHomePresenter, IResponse<HomeBean> {
 
     override fun destoryView() {
         homeView = null
@@ -24,8 +25,8 @@ class HomePresenterImpl(var homeView: IHomeView?) : IHomePresenter, IResponse<Ho
         maxTime = result.info.maxtime
         // 区分初始化数据  加载更多数据
         when (type) {
-            TYPE_INIT_OR_REFRESH-> homeView?.loadSuccess(result.list)
-            TYPE_LOAD_MORE->homeView?.loadMore(result.list)
+            TYPE_INIT_OR_REFRESH-> homeView?.loadSuccess(result)
+            TYPE_LOAD_MORE->homeView?.loadMore(result)
         }
     }
 

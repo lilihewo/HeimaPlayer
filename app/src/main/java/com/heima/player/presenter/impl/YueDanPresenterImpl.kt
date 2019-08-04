@@ -34,14 +34,14 @@ class YueDanPresenterImpl(var iYueDanView: IYueDanView?): IYueDanPresenter, IRes
      * 初始化数据或者刷新数据
      */
     override fun loadData() {
-        YueDanRequest(TYPE_INIT_OR_REFRESH, Constants.BU_DE_JIE_VIDEO_URL, this).excute()
+        YueDanRequest(TYPE_INIT_OR_REFRESH, Constants.BU_DE_JIE_IMAGE_URL, this).excute()
     }
 
     /**
      * 加载更多数据
      */
     override fun loadMore() {
-        val url = Constants.BU_DE_JIE_VIDEO_URL + "&maxtime=" + maxTime
+        val url = Constants.BU_DE_JIE_IMAGE_URL + "&maxtime=" + maxTime
         YueDanRequest(TYPE_LOAD_MORE, url, this).excute()
     }
 }

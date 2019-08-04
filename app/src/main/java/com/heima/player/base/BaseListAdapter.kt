@@ -13,15 +13,19 @@ abstract class BaseListAdapter<ITEM_BEAN, ITEM_VIEW:View>: RecyclerView.Adapter<
 
     private var mList = ArrayList<ITEM_BEAN>()
 
-    fun updateList(list: List<ITEM_BEAN>) {
-        this.mList.clear()
-        this.mList.addAll(list)
-        notifyDataSetChanged()
+    fun updateList(list: List<ITEM_BEAN>?) {
+        list?.let {
+            this.mList.clear()
+            this.mList.addAll(list)
+            notifyDataSetChanged()
+        }
     }
 
-    fun loadMore(list: List<ITEM_BEAN>) {
-        this.mList.addAll(list)
-        notifyDataSetChanged()
+    fun loadMore(list: List<ITEM_BEAN>?) {
+        list?.let {
+            this.mList.addAll(list)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseListAdapter.BaseListHolder {

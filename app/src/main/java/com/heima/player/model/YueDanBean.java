@@ -2,6 +2,7 @@ package com.heima.player.model;
 
 import java.util.ArrayList;
 
+//http://api.budejie.com/api/api_open.php?a=list&c=data&type=10
 public class YueDanBean {
 
 	public InfoBean info;
@@ -20,8 +21,9 @@ public class YueDanBean {
 	public class VideoBean {
 		public String text;
 //		public String profile_image;
-		public String bimageuri;
-		public String videouri;
+//		public String bimageuri;
+//		public String videouri;
+		public String image0;
 	}
 
 }

@@ -5,5 +5,6 @@ public class Constants {
 
     // 百思不得姐的视频
     public static final String BU_DE_JIE_VIDEO_URL = "http://api.budejie.com/api/api_open.php?a=list&c=data&type=41";
+    public static final String BU_DE_JIE_IMAGE_URL = "http://api.budejie.com/api/api_open.php?a=list&c=data&type=10";
 
 }
